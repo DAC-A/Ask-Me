@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/f97c0f6cbf.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <!-- Signup page -->
+    <div class="signup-page">
+      <!-- random boxes -->
+      <div class="R4"></div>
+      <div class="R-box" id="R1"></div>
+      <div class="R-box" id="R2"></div>
+      <!-- Signup-box -->
+      <div class="signup-box">
+        <h1>Sign Up</h1>
+
+        <!-- form -->
+        <form action="">
+          <!-- Username -->
+          <div class="text">
+            <div class="text1">
+              <em class="fas fa-user"></em>
+              <input
+                class="text-size"
+                type="text"
+                id="username"
+                placeholder="Full Name"
+              />
+            </div>
+          </div>
+
+          <!-- email address -->
+          <div class="text">
+            <div class="text2">
+              <em class="fas fa-envelope"></em>
+              <input
+                class="text-size"
+                type="email"
+                id="email"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="text">
+            <div class="text3">
+              <em class="fas fa-lock"></em>
+              <input
+                class="text-size"
+                type="password"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="text">
+            <div class="text3">
+              <em class="fas fa-unlock"></em>
+              <input
+                class="text-size"
+                type="password"
+                id="password"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+
+          <!-- Sign up button -->
+          <div class="signup-btn">
+            <input type="submit" value="SIGN UP" />
+          </div>
+
+          <!-- for space -->
+          <div class="spacer"></div>
+
+          <!-- Terms and policy -->
+          <div class="TnP">
+            By Signing up, you agree to our
+            <a href="" class="terms">Terms of Use</a> and
+            <!-- <em class="terms">Terms of Use</em> and -->
+            <a href="" class="policy">Privacy Policy</a>
+            <!-- <em class="policy">Privacy Policy</em> -->
+          </div>
+
+          <!-- For login -->
+          <div class="log_in">
+            Already have an account?
+            <button class="btn">LOG IN</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
