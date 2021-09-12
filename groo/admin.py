@@ -1,3 +1,4 @@
 from django.contrib import admin
+from groo.models import NewUser
 
-# Register your models here.
+admin.site.register(NewUser)
