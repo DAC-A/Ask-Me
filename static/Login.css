@@ -156,14 +156,14 @@ input[type="submit"]:hover {
   box-shadow: 1px 1px 3px #181618;
 }
 .spacer {
-  height: 150px;
+  height: 110px;
 }
 .sign_up {
   margin: 20px;
   font-size: smaller;
   text-align: center;
 }
-.sign_up button {
+.sign_up div {
   color: rgba(27, 84, 235, 1);
   margin: 5px;
   padding: 5px;
@@ -172,7 +172,7 @@ input[type="submit"]:hover {
   background: none;
   cursor: pointer;
 }
-.sign_up button:hover {
+.sign_up div:hover {
   /* border: 2px solid black; */
   color: rgb(211, 4, 238);
   font-weight: 400;
@@ -216,3 +216,18 @@ input[type="submit"]:hover {
   top: -320px;
   right: 300px;
 }
+.hide{
+  display: none;
+}
+form .invalid{
+  border-bottom: 2px solid red;
+
+}
+form .invalid-msg{
+  color: red;
+  font-size: 11px;
+  display: inline-block;
+  position: relative;
+  top: -5px;
+}
+
