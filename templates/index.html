@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap"
+      rel="stylesheet"
+      />
+    <script
+      src="https://kit.fontawesome.com/f97c0f6cbf.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/static/signup.css" />
+    <link rel="stylesheet" href="/static/Login.css" />
+  </head>
+  <body>
+
+    <!-- login page -->
+    <div class="login-page" id="login-page">
+
+      <!-- random boxes -->
+      <div class="R4"></div>
+      <div class="R-box" id="R1"></div>
+      <div class="R-box" id="R2"></div>
+      <!-- login-box -->
+      <div class="login-box">
+
+        <h1>Login</h1>
+
+        <!-- form -->
+        <form action="">
+
+          <!-- Username -->
+          <div class="text">
+            <label for="Login_username">Email</label>
+            <div class="text1">
+              <em class="fas fa-user"></em>
+              <input 
+                class="text-size effect-remover" 
+                type="email" 
+                id="Login_username"
+                placeholder="Enter your email" 
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="text" id="login_password_box">
+            <label for="login_password" class="gg">Password
+              <div class="invalid-msg" id="invalid-msg" style=" display: none;">*Password incomplete</div>
+            </label>
+            <div class="text2">
+              <em class="fas fa-lock"></em>
+              <input class="text-size effect-remover" type="password" id="login_password"
+              placeholder="Enter your password" />
+            </div>
+          </div>
+
+          <!-- forgot -->
+          <div class="forget"><a>Forgot Password?</a></div>
+          <div class="login-btn">
+            <input type="submit" value="LOGIN" />
+          </div>
+
+          <!-- icon btn sign in -->
+          <div class="sign_up">Or Sign In Using</div>
+          <div id="img1">
+            <div class="img">
+              <a href="https://www.facebook.com/"><img src="/static/facebook.png" alt=""
+                  /></a>
+              <a href="https://twitter.com/"><img src="/static/twitter.png" alt=""
+                  /></a>
+              <a href="https://mail.google.com/"><img src="/static/google.png" alt=""
+                  /></a>
+              <!-- <button><img src="facebook.png" alt="" /></button>
+              <button><img src="twitter.jpg" alt="" /></button>
+              <button><img src="google.png" alt="" /></button> -->
+            </div>
+          </div>
+
+
+          <div class="spacer"></div>
+          <div class="sign_up">
+            Create an account
+            <!-- <button class="btn" id="SPbtn">SIGN UP</button> -->
+            <div class="btn" id="SPbtn">SIGN UP</div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup page -->
+    <div class="signup-page hide" id="signup-page">
+      <!-- random boxes -->
+      <div class="R4"></div>
+      <div class="R-box" id="R1"></div>
+      <div class="R-box" id="R2"></div>
+      <!-- Signup-box -->
+      <div class="signup-box">
+        <h1>Sign Up</h1>
+
+        <!-- form -->
+        <form action="formsignup" method="POST"> {% csrf_token %}
+          <!-- Username -->
+          <div class="text">
+            <label for="username">UserName</label>
+            <div class="text1">
+              <em class="fas fa-user"></em>
+              <input
+              class="text-size effect-remover"
+              type="text"
+              id="username"
+              placeholder="Full Name"
+              name="username"
+              />
+            </div>
+          </div>
+          
+          <!-- email address -->
+          <div class="text">
+            <label for="email">Email</label>
+            <div class="text2">
+              <em class="fas fa-envelope"></em>
+              <input
+              class="text-size effect-remover"
+              type="email"
+              id="email"
+              placeholder="Email"
+              name="email"
+              />
+            </div>
+          </div>
+          
+          <!-- Password -->
+          <div class="text" id="signup_password_box">
+            <label for="password">Password
+              <div class="invalid-msg" id="signup-invalid" style="font-size: 15px; display: none;">*</div>
+            </label>
+            <div class="text3">
+              <em class="fas fa-lock"></em>
+              <input
+              class="text-size effect-remover"
+              type="password"
+              id="password"
+              placeholder="Password"
+              name="password"
+              />
+            </div>
+          </div>
+          <div class="signup-invalid-msg" id="password_suggestion" style="display: none;">
+            <div class="triangle"></div>
+            <!-- <em class="fas fa-lock"></em> -->
+            Password must include:
+              <li>Atleast 8 characters long</li>
+              <li>Use 1 or more numbers</li>
+              <li>Use atleast one special symbol</li>
+            
+          </div>
+          
+          <!-- Confirm Password -->
+          <div class="text" id="confirm_password_box">
+            <label for="confirm_password">Confirm Password
+              <div class="invalid-msg" id="err_msg" style="display: none;">*Password doesn't match</div>
+            </label>
+            <div class="text3">
+              <em class="fas fa-unlock"></em>
+              <input
+                class="text-size effect-remover"
+                type="password"
+                id="confirm_password"
+                placeholder="Confirm Password"
+                />
+            </div>
+          </div>
+          <div class="spacers"></div>
+
+          <!-- Sign up button -->
+          <div class="signup-btn">
+            <input type="submit" value="SIGN UP" />
+          </div>
+
+          <br>
+          <!-- Terms and policy -->
+          <div class="TnP">
+            By Signing up, you agree to our
+            <a href="" class="terms">Terms of Use</a> and
+            <!-- <em class="terms">Terms of Use</em> and -->
+            <a href="" class="policy">Privacy Policy</a>
+            <!-- <em class="policy">Privacy Policy</em> -->
+          </div>
+
+          <!-- For login -->
+
+        </form>
+        <div class="log_in">
+          Already have an account?
+            <div class="btn" id="login_btn">LOG IN</div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="index.js"></script>
+</html>

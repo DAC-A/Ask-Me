@@ -86,7 +86,7 @@ form .text {
   color: blueviolet;
   outline: none;
 }
-.spacer {
+.spacers {
   height: 10px;
 }
 input[type="submit"] {
@@ -120,7 +120,7 @@ input[type="submit"]:hover {
   font-size: smaller;
   text-align: center;
 }
-.log_in button {
+.log_in div {
   color: rgba(27, 84, 235, 1);
   margin: 5px;
   padding: 5px;
@@ -129,7 +129,7 @@ input[type="submit"]:hover {
   background: none;
   cursor: pointer;
 }
-.log_in button:hover {
+.log_in div:hover {
   color: rgb(211, 4, 238);
   font-weight: 400;
 }
@@ -165,3 +165,34 @@ input[type="submit"]:hover {
   top: -320px;
   right: 300px;
 }
+
+form .signup-invalid-msg{
+  border-radius: 15px;
+  padding: 8px 40px;
+  position: absolute;
+  display: inline-block;
+  background-color: aliceblue;
+  z-index: 3;
+  left: 25px;
+  font-size: 10px;
+  top: 51%;
+  border-top: 4px solid red;
+  box-shadow: 1px 1px 4px black;
+}
+form .signup-invalid-msg::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    transform: rotate(45deg);
+    border: 2px solid red;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid red;
+    border-left: 4px solid red;
+    background-color: aliceblue;
+    z-index: -1;
+    top: -10.6px;
+    left: 35px;
+  }
