@@ -55,7 +55,29 @@ def addquestion(request):
     return home(request)
     
 def home(request):
-    print("yha pe aa gya")
     curr.execute('''SELECT * FROM questions''')
     parameters={'ques':curr}
     return render(request,'home.html',parameters)
+
+def showanswers(request):
+    if request.method == 'POST':
+        ques_no=request.POST.get('ques_no')
+        my_query='''SELECT answer FROM answers WHERE ques_no=%s'''
+        val=(ques_no,)
+        curr.execute(my_query,val)
+        parameter={'answers':curr}
+        return render(request,'displayanswers.html',parameter)
+
+
+def addans(request):
+    return render(request,'addans.html')
+
+def anssubmit(request):
+    if request.method == 'POST':
+        ques_no=request.POST.get('ques_no')
+        answer=request.POST.get('answer')
+        my_query='''INSERT INTO answers (ques_no,answer) VALUES (%s,%s)'''
+        val=(ques_no,answer)
+        curr.execute(my_query,val)
+        db.commit()
+        return home(request)
