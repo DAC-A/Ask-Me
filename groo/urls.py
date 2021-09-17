@@ -7,5 +7,8 @@ urlpatterns = [
     path('formsignup',views.formsignup,name='formsignup'),
     path('formlogin',views.formlogin,name='formlogin'),
     path('question',views.question,name='question'),
-    path('addquestion',views.addquestion,name='addquestion')
+    path('addquestion',views.addquestion,name='addquestion'),
+    path('showanswers',views.showanswers,name='showanswers'),
+    path('addans',views.addans,name='addans'),
+    path('anssubmit',views.anssubmit,name='anssubmit')
 ]

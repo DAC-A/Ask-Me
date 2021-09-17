@@ -55,11 +55,19 @@
   {% for que in ques %}
     {{que.1}}<br>
     
-    <button type="button" class="btn btn-success" onclick="func({{que.0}})">View Answers</button>
+    <button type="button" class="btn btn-success" onclick="view_ans({{que.0}})">View Answers</button>
+    <button type="button" href="/addans" class="btn btn-success" onclick="add_ans({{que.0}})">Add Answers</button>
     <br>
     <hr>
 
   {% endfor %}
+
+  <div class="forrm" style="display: none;">
+     <form action="showanswers" method="POST" id="frm">
+     {% csrf_token %}
+       <input type="text" name="ques_no" id="ques_no">ques_no
+     </form>
+  </div>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
@@ -69,8 +77,15 @@
     crossorigin="anonymous">
   </script>
   <script>
-    function func(a){
-      console.log(a);
+    function view_ans(a){
+      formobj=document.forms['frm'];
+      formobj.elements["ques_no"].value =a;
+      formobj.submit();
+    }
+    function add_ans(a){
+      
+      sessionStorage.setItem("ques_no",a);
+      window.location.replace("/addans");
     }
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
