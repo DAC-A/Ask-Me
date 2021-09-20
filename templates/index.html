@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>DACA - Home</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap"
       rel="stylesheet"
@@ -15,12 +15,67 @@
     ></script>
     <link rel="stylesheet" href="/static/signup.css" />
     <link rel="stylesheet" href="/static/Login.css" />
+    <link rel="stylesheet" href="/static/Navbar.css">
+    <link rel="stylesheet" href="/static/home.css">
+
+    <style>
+      nav{
+         background-color: rgba(255, 255, 255, 0.774);
+      }
+      .hover{
+        background-color: white;
+      }
+      .circle_back{
+        width: 60px;
+        z-index: 4;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+    </style>
   </head>
   <body>
 
-    <!-- login page -->
-    <div class="login-page" id="login-page">
+    <!-- Home page -->
+    <header id="Home" class="temp">
+      <!-- <div class="wrapper">
+  <div class="logo">
+      <img src="daca.png" alt="">
+  </div>
+<ul class="nav-area">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Sign Up</a></li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div> -->
+      
 
+      <nav>
+          <div class="logo">
+              <h1>DAC-A</h1>
+          </div>
+          <div class="menu">
+                  <a href="#" class="home hover">Home</a>
+                  <a href="#" class="questions hover" id="ask_questions">Ask Question</a>
+                  <a href="#" class="About hover">About</a>
+          </div>
+          <div class="SL">
+            <div href="" id="homesignup" class="hover">SignUp</div>
+            <div href="" id="homelogin" class="hover">Login</div>
+          </div>
+      </nav>
+      <div class="welcome-text">
+          <h1>
+              Welcome to <br><span>DAC-A</span></h1>
+          <a href="#" id="mainbtn">Ask Questions &rarr;</a>
+      </div>
+    </header>
+
+    <!-- login page -->
+    <div class="login-page hide" id="login-page">
+      <div class="circle_back" id="back1"><img src="https://img.icons8.com/nolan/50/circled-left-2.png"/> </div>
       <!-- random boxes -->
       <div class="R4"></div>
       <div class="R-box" id="R1"></div>
@@ -96,7 +151,9 @@
 
     <!-- Signup page -->
     <div class="signup-page hide" id="signup-page">
+      <div class="circle_back" id="back2"><img src="https://img.icons8.com/nolan/50/circled-left-2.png"/> </div>
       <!-- random boxes -->
+
       <div class="R4"></div>
       <div class="R-box" id="R1"></div>
       <div class="R-box" id="R2"></div>
@@ -193,24 +250,57 @@
             <a href="" class="policy">Privacy Policy</a>
             <!-- <em class="policy">Privacy Policy</em> -->
           </div>
-
+          
           <!-- For login -->
-
+          
         </form>
         <div class="log_in">
           Already have an account?
-            <div class="btn" id="login_btn">LOG IN</div>
+          <div class="btn" id="login_btn">LOG IN</div>
         </div>
       </div>
     </div>
-
+    
   </body>
   <script>
-    console.log("Check");
+    // console.log("Check");
+    let signUpPg=document.getElementById("signup-page");
+    let loginInPg=document.getElementById("login-page");
+    
+    // Signup Btn
+    let homesignup=document.getElementById("homesignup");
+    let Home=document.getElementById("Home");
+    homesignup.addEventListener("click",function(){
+      Home.classList.add("hide");
+      signUpPg.classList.remove("hide");
+    });
+    let homelogin=document.getElementById("homelogin");
+    homelogin.addEventListener("click",()=>{
+      Home.classList.add("hide");
+      loginInPg.classList.remove("hide");
+    });
+    let back1=document.getElementById("back1");
+    back1.addEventListener("click",()=>{
+      Home.classList.remove("hide");
+      loginInPg.classList.add("hide");
+    });
+    let back2=document.getElementById("back2");
+    back2.addEventListener("click",()=>{
+      Home.classList.remove("hide");
+      signUpPg.classList.add("hide");
+    });
+    let mainbtn=document.getElementById("mainbtn");
+    let ask_questions=document.getElementById("ask_questions");
+    mainbtn.addEventListener("click",()=>{
+      Home.classList.add("hide");
+      signUpPg.classList.remove("hide");
+    })
+    ask_questions.addEventListener("click",()=>{
+      Home.classList.add("hide");
+      signUpPg.classList.remove("hide");
+    })
 
 // switches to SignUP Page
-let signUpPg=document.getElementById("signup-page");
-let loginInPg=document.getElementById("login-page");
 let signUpbtn=document.getElementById("SPbtn");
 signUpbtn.addEventListener("click",function(){
     passwordSuggest();
