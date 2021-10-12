@@ -5,13 +5,18 @@
 }
 footer {
   position: absolute;
-  bottom: 0;
   right: 0;
   border-radius: 50px;
   /* border-top-right-radius: 300px; */
-  background-color: rgb(104, 13, 55);
+  background-color: rgb(252, 222, 236);
   height: 500px;
   width: 1500px;
+  margin-top: 100px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset,
+      0 4px 4px rgba(0, 0, 0, 0.1), 0 1px 6px rgba(0, 0, 0, 0.05),
+      0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1) inset;
 }
 footer img {
   overflow: hidden;
@@ -39,16 +44,21 @@ footer img {
 }
 .connect {
   font-size: xx-large;
-  color: aliceblue;
+  color: black;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 .sub-box-1 {
-  border: 2px solid rgb(255, 255, 255);
+  border: 3px solid rgb(255, 255, 255);
   border-radius: 50px;
   height: 40px;
   width: 700px;
   display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset,
+      0 4px 4px rgba(0, 0, 0, 0.1), 0 1px 6px rgba(0, 0, 0, 0.05),
+      0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1) ;
 }
 .sub-box-1 input {
   padding: 7px;
@@ -65,25 +75,27 @@ footer img {
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
   height: 100%;
-  padding: 7px;
+  padding: 8px;
   width: 35%;
-  border-top: 3px solid aliceblue;
+  /* border-top: 3px solid aliceblue; */
   vertical-align: middle;
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  /* transform: translateZ(0); */
+  /* box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   transition-duration: 0.3s;
-  transition-property: transform;
+  transition-property: transform; */
+  
+  
 }
 .btn:hover {
-  font-weight: bolder;
+  /* font-weight: bolder; */
 }
 .btn:active {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 .box-2 {
-  color: aliceblue;
+  color: black;
   margin-right: 80px;
   border-bottom: 2px solid aliceblue;
   height: 50%;
@@ -190,13 +202,13 @@ footer img {
 }
 .box-3 {
   display: flex;
-  color: aliceblue;
+  color: black;
   /* border: 2px solid darkgoldenrod; */
   height: 25%;
 }
 .resrv {
   width: 30%;
-  color: aliceblue;
+  color: black;
   display: flex;
   padding-top: 20px;
   justify-content: flex-start;
@@ -218,7 +230,7 @@ footer img {
     box-shadow: 1px 4px 1px 1px #dcdde1;
   } */
 .logo i {
-  /* background-color: aliceblue; */
+  /* background-color: black; */
   /* border-radius: 20px; */
   padding: 10px;
 }
