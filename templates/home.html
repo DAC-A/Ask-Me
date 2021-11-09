@@ -1,98 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/card.css">
+    <link rel="stylesheet" href="/static/Navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans JP", sans-serif;
+        }
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        body {
+            /* background: -moz-linear-gradient(40deg, rgba(0,218,222,1) 0%, rgba(215,11,228,1) 70%);
+            background: -webkit-linear-gradient(40deg, rgba(0,218,222,1) 0%, rgba(215,11,228,1) 70%);
+            background: linear-gradient(40deg, rgba(0,218,222,1) 0%, rgba(215,11,228,1) 70%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00dade",endColorstr="#d70be4",GradientType=1); */
+            background: rgba(0, 218, 222, 0.192);
 
-  <title>Hello, world!</title>
+            background-color: white;
+            background-color: aliceblue;
+        }
+    </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Ye DACA ka ilaka hai</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
+    <nav>
+        <div class="logo">
+            <h1>DAC-A</h1>
+        </div>
+        <div class="menu">
+            <a href="#" class="home hover">Home</a>
+            <a href="/question" class="questions hover">Ask Question</a>
+            <a href="#" class="About hover">About</a>
+        </div>
+        <div class="SL">
+            <a href="/signup">
+                <div class="hover">Log Out</div>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-        <a class="btn btn-warning" href="/question" role="button">Ask a Question</a>
-      </div>
+        </div>
+    </nav>
+    <div class="spacer"></div>
+
+    <div class="card-container">
+        {% for ques in ques %}
+        <div class="card">
+            <div class="close">
+                <div class="line1 line"></div>
+                <div class="line2 line"></div>
+            </div>
+            <div class="que-box">
+                <h4>{{ques.1}}</h4>
+            </div>
+            <div class="btns-box">
+                <div class="ans-btn">
+                    <button onclick="func({{ques.0}})" class="element--hover" style="border: 0px;">
+                    
+                        View Answer <span class="highlight"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div style="display: none;">
+        <form action="/showanswers" method="post" id="formm">
+            {%csrf_token%}
+            <input type="text" name="ques_no">
+        </form>
     </div>
-  </nav>
-
-  {% for que in ques %}
-    {{que.1}}<br>
-    
-    <button type="button" class="btn btn-success" onclick="view_ans({{que.0}})">View Answers</button>
-    <button type="button" href="/addans" class="btn btn-success" onclick="add_ans({{que.0}})">Add Answers</button>
-    <br>
-    <hr>
-
-  {% endfor %}
-
-  <div class="forrm" style="display: none;">
-     <form action="showanswers" method="POST" id="frm">
-     {% csrf_token %}
-       <input type="text" name="ques_no" id="ques_no">ques_no
-     </form>
-  </div>
-
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous">
-  </script>
-  <script>
-    function view_ans(a){
-      formobj=document.forms['frm'];
+    </div>
+    <script>
+        function func(a){
+            formobj=document.forms['formm'];
       formobj.elements["ques_no"].value =a;
       formobj.submit();
-    }
-    function add_ans(a){
-      
-      sessionStorage.setItem("ques_no",a);
-      window.location.replace("/addans");
-    }
-  </script>
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
-</body>
+        }
+    </script>
 
+</body>
 </html>
