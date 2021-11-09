@@ -90,10 +90,11 @@
     </nav>
     <div class="addQuestionBox">
         <div class="addQuestion">
-        <h3>Ask a question about your assignment</h3>
-        <form action="" class="show">
-            <textarea name="" id="question-content" cols="30" rows="10" class="question" placeholder="Write your question here (Keep it simple and clear to get the best answer)"></textarea>
-            <div class="hover sp-hover" id="addQueBtn">Ask Question</div>
+        <h3>Ask a question</h3>
+        <form action="/addquestion" class="show" method="post" id="formm">
+            {%csrf_token%}
+            <textarea name="question" id="question-content" cols="30" rows="10" class="question" placeholder="Write your question here (Keep it simple and clear to get the best answer)"></textarea>
+            <div onclick="myfunc()" class="hover sp-hover" id="addQueBtn">Ask Question</div>
         </form>
         </div>
     </div>
@@ -113,5 +114,9 @@
             
         }
     })
+    function myfunc(){
+        formobj=document.forms['formm'];
+        formobj.submit();
+    }
 </script>
 </html>
