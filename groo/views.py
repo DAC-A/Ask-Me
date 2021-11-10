@@ -6,11 +6,14 @@ import mysql.connector as conn
 db =conn.connect(user='sql6429261',passwd='Mf3Q6WaXqp',host='sql6.freemysqlhosting.net',db='sql6429261')
 curr=db.cursor(buffered=True)
 
+loggedin=0
 # Create your views here.
 def index(request):
-    return HttpResponse("Home Page abhi tk nhi bna h...")
+    return render(request,'index.html')
 
 def signup(request):
+    global loggedin
+    loggedin=0
     return render(request,'index.html')
 
 def formsignup(request):
@@ -32,16 +35,15 @@ def formlogin(request):
         password=request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
-            return home(request)
+            global loggedin
+            loggedin=1
+            return redirect('home')
         else:
             return redirect('signup')
 
-    
-    return HttpResponse('Kuch to gadbad h daya')
-
 
 def question(request):
-    return render(request,'addquestion.html')
+    return render(request,'addQuestions.html')
 
 def addquestion(request):
     if request.method == 'POST':
@@ -52,25 +54,40 @@ def addquestion(request):
         curr.execute(my_query,val)
         db.commit()
 
-    return home(request)
+    return redirect('home')
     
 def home(request):
-    curr.execute('''SELECT * FROM questions''')
-    parameters={'ques':curr}
-    return render(request,'home.html',parameters)
-
+    if loggedin==1:
+        curr.execute('''SELECT * FROM questions''')
+        parameters={'ques':curr}
+        return render(request,'home.html',parameters)
+    return HttpResponse('Kindly Login First')
+    
 def showanswers(request):
     if request.method == 'POST':
         ques_no=request.POST.get('ques_no')
         my_query='''SELECT answer FROM answers WHERE ques_no=%s'''
         val=(ques_no,)
         curr.execute(my_query,val)
-        parameter={'answers':curr}
-        return render(request,'displayanswers.html',parameter)
+        parameter={'answers':curr.fetchall()}
+        my_query='''SELECT question FROM questions WHERE ques_no=%s'''
+        val=(ques_no,)
+        curr.execute(my_query,val)
+        parameter['ques']=curr.fetchall()[0][0]
+        parameter['quesno']=ques_no
+        print(parameter)
+        return render(request,'ShowAnswers.html',parameter)
 
 
 def addans(request):
-    return render(request,'addans.html')
+    ques_no=request.POST.get('ques_no')
+    print(ques_no)
+    my_query='''SELECT question FROM questions WHERE ques_no=%s'''
+    val=(ques_no,)
+    curr.execute(my_query,val)
+    parameter={'ques':curr.fetchone()[0]}
+    parameter['ques_no']=ques_no
+    return render(request,'addAnswer.html',parameter)
 
 def anssubmit(request):
     if request.method == 'POST':
@@ -80,4 +97,4 @@ def anssubmit(request):
         val=(ques_no,answer)
         curr.execute(my_query,val)
         db.commit()
-        return home(request)
+        return redirect('home')
